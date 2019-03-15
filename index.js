@@ -18,6 +18,12 @@ const server = (request, response) => {
     // trigger when the stream is finished.
     request.on("end", () => {
         console.log(method, headers, path, query, body);
+        try {
+            body = JSON.parse(body);
+        } catch (e) {
+            console.error(e);
+            body = {};
+        }
         router(request, response, method, headers, path, query, body)
     });
 };
