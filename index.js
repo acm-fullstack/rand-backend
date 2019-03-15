@@ -2,6 +2,7 @@ const url = require("url");
 const stringDecoder = require("string_decoder");
 const decoder = new stringDecoder.StringDecoder("utf-8");
 const config = require("./config");
+const router = require("./routes");
 
 const server = (request, response) => {
     const {pathname, query} = url.parse(request.url, true);
@@ -17,9 +18,7 @@ const server = (request, response) => {
     // trigger when the stream is finished.
     request.on("end", () => {
         console.log(method, headers, path, query, body);
-        response.setHeader("Content-Type", "application/json");
-        response.writeHead(200);
-        response.end("hello I am a happy server!");
+        router(request, response, method, headers, path, query, body)
     });
 };
 
