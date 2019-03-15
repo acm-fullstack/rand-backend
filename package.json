@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/acm-fullstack/rand-backend/issues"
   },
-  "homepage": "https://github.com/acm-fullstack/rand-backend#readme"
+  "homepage": "https://github.com/acm-fullstack/rand-backend#readme",
+  "dependencies": {
+    "apollo-server": "^2.4.8",
+    "graphql": "^14.1.1"
+  }
 }
